@@ -37,15 +37,15 @@ function setup() {
 }
 
 function draw() {
-	noFill();
-	stroke(0, 0, 255);
-	ellipse(200, 100, 120, 60);
-	noStroke();
-	fill(255, 0, 0);
-	rect(200, 200, 80, 80);
-	stroke(60, 150, 60);
-	strokeWeight(3);
-	line(100, 300, 400, 400);
+  noFill();
+  stroke(0, 0, 255);
+  ellipse(200, 100, 120, 60);
+  noStroke();
+  fill(255, 0, 0);
+  rect(200, 200, 80, 80);
+  stroke(60, 150, 60);
+  strokeWeight(3);
+  line(100, 300, 400, 400);
 }
 ```
 	A função createCanvas() define o tamanho da tela e o background() define sua cor de fundo. As funções fill() e stroke(), definem as cores de preenchimento e de contorno, respectivamente. Uma vez utilizadas essas funções, seus efeitos valerão para todas as formas declaradas abaixo. noFill() e noStroke(), retiram o preenchimento e o contorno, respectivamente, e strokeWeight() define uma espessura para o contorno da forma.
@@ -94,3 +94,24 @@ function draw() {
 }
 
 ```
+	Também podemos criar nossas próprias variáveis.
+``` javascript
+var posX, posY;
+
+function setup() {
+  createCanvas(640, 480);
+  posX = 0;
+  posY = 200;
+}
+
+function draw() {
+  background(0);
+  if (posX < 640){
+	posX = posX + 15;
+  }else{
+	posX = 0;
+  }
+  ellipse(posX, posY, 50, 50);
+}
+```
+	Aqui, criamos as variáveis antes das funções, para que elas possam ser usadas em todos os lugares do código. No setup(), damos valores iniciais, visto que o setup só é executado uma única vez. No draw(), verificamos se a posição X do círculo está dentro do nosso canvas, se está verdadeiro, a variável da posição X é incrementada fazendo com que o círculo ande pela tela na horizontal, se ele sai do canvas, a posição X volta para zero (0) e o ciclo recomeça. O background está sendo repintado no draw() para evitar que o círculo deixe um rastro na tela; primeiro é pintado um fundo, depois o círculo é pintado em uma posição X, depois o fundo é pintado novamente e só então um novo círculo é pintado, em uma nova posição X. Experimente retirar a função que pinta o fundo do canvas e veja o que acontece.
