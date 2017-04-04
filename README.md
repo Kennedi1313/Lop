@@ -1,6 +1,7 @@
 Começando
 
-  Primeiro, você irá precisar de uma página HTML simples, como a mostrada abaixo:
+Primeiro, você irá precisar de uma página HTML simples, como a mostrada abaixo:
+
 ``` html
 <html>
 <head>
@@ -15,8 +16,8 @@ Começando
 </body>
 </html>
 ```
-  Ela servirá como meio de acesso ao seu arquivo de script, salve-a como "index.html".
-  Em seguida, abra o editor de sua preferência e digite o seguinte:
+	Ela servirá como meio de acesso ao seu arquivo de script, salve-a como "index.html".
+	Em seguida, abra o editor de sua preferência e digite o seguinte:
 ``` javascript
 function setup() {
 
@@ -26,9 +27,9 @@ function draw() {
   ellipse(50, 50, 80, 80);
 }
 ```
-  O processing tem diversas funções para desenho de formas, tais como ellipse(), rect(), line(), point(), quad(), triangle()... Todas elas precisam de informações como posição e tamanho, que são colocadas dentro dos parênteses.
-  No caso do código acima, uma elipse é desenhada na tela. Para isso, temos que informar as coordenadas e o tamanho da elipse usando *ellipse([coordenada x],[coordenada y], [largura], [altura])*. Salve o arquivo com o nome "Jogo.js" e abra o index no navegador.
-  Podemos também, brincar com a aparência dessas formas. No seu script, digite o seguinte:
+	O processing tem diversas funções para desenho de formas, tais como ellipse(), rect(), line(), point(), quad(), triangle()... Todas elas precisam de informações como posição e tamanho, que são colocadas dentro dos parênteses.
+	No caso do código acima, uma elipse é desenhada na tela. Para isso, temos que informar as coordenadas e o tamanho da elipse usando *ellipse([coordenada x],[coordenada y], [largura], [altura])*. Salve o arquivo com o nome "Jogo.js" e abra o index no navegador.
+	Podemos também, brincar com a aparência dessas formas. No seu script, digite o seguinte:
 ``` javascript
 function setup() {
 	createCanvas(640, 480);
@@ -47,11 +48,11 @@ function draw() {
 	line(100, 300, 400, 400);
 }
 ```
-  A função createCanvas() define o tamanho da tela e o background() define sua cor de fundo. As funções fill() e stroke(), definem as cores de preenchimento e de contorno, respectivamente. Uma vez utilizadas essas funções, seus efeitos valerão para todas as formas declaradas abaixo. noFill() e noStroke(), retiram o preenchimento e o contorno, respectivamente, e strokeWeight() define uma espessura para o contorno da forma.
+	A função createCanvas() define o tamanho da tela e o background() define sua cor de fundo. As funções fill() e stroke(), definem as cores de preenchimento e de contorno, respectivamente. Uma vez utilizadas essas funções, seus efeitos valerão para todas as formas declaradas abaixo. noFill() e noStroke(), retiram o preenchimento e o contorno, respectivamente, e strokeWeight() define uma espessura para o contorno da forma.
   
-  Agora vejamos algo mais interessante...
-  Primeiro teremos que saber o que são as funções setup() e draw(), que viemos utilizando aqui. Elas são usadas basicamente para organizar o fluxo do código. O setup(), é executado apenas uma vez, no começo, para declarações iniciais. Já o draw(), ficará se repetindo no decorrer da execução, nele poderemos fazer algo mudar seu valor ao longo do tempo. Um exemplo é a posição da ellipse, que pode ser alterada de acordo com a posiço do mouse!
-  Delete o script anterior e digite o seguinte: 
+	Agora vejamos algo mais interessante...
+	Primeiro teremos que saber o que são as funções setup() e draw(), que viemos utilizando aqui. Elas são usadas basicamente para organizar o fluxo do código. O setup(), é executado apenas uma vez, no começo, para declarações iniciais. Já o draw(), ficará se repetindo no decorrer da execução, nele poderemos fazer algo mudar seu valor ao longo do tempo. Um exemplo é a posição da ellipse, que pode ser alterada de acordo com a posiço do mouse!
+	Delete o script anterior e digite o seguinte: 
 ``` javascript
 function setup() {
   createCanvas(640, 480);
@@ -61,4 +62,35 @@ function setup() {
 function draw() {
   ellipse(mouseX, mouseY, 80, 80);
 }
+```
+	Os parâmetros mouseY e mouseX, funcionam como variáveis que armazenam os valores da posição do mouse.
+	Agora vamos implementar um pouco esse código.
+``` javascript
+function setup() {
+  createCanvas(640, 480);
+  noFill();
+}
+
+function draw() {
+  if (mouseIsPressed){
+    ellipse(mouseX, mouseY, 100, 100);
+  }
+}
+
+```
+	A variável mouseIsPressed é uma boleana, nela é armazenado true para o caso de o botão do mouse estar sendo pressionado e false para o caso do botão estar solto.
+	A função random(min, max) também pode ser muito útil para diversas aplicações.
+	
+``` javascript
+function setup() {
+  createCanvas(640, 480);
+  noFill();
+}
+
+function draw() {
+  if (mouseIsPressed){
+    ellipse(mouseX, mouseY, random(100, 200), random(100, 200));
+  }
+}
+
 ```
